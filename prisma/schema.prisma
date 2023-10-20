@@ -51,3 +51,21 @@ model Sale{
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Supplier{
+  id Int  @id @default(autoincrement())
+  supplier_name String
+  supplier_address String
+  phone_number String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product{
+  id Int  @id @default(autoincrement())
+  product_name String
+  product_price Int
+  product_quantity Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
