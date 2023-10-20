@@ -10,34 +10,69 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Purchase{
-  id Int  @id @default(autoincrement())
-  supplier_id Int
-  code String @unique
-  shipping_cost Int
-  shipping_info String
-  other_cost Int
-  other_info String
-  total Int
-  payment String
-  payment_method String
-  status String 
+// Prisma schema
+
+enum Gender {
+  unset
+  Pria
+  Wanita
+}
+
+enum Posisi {
+  unset
+  SuperAdmin
+  Admin
+  Sales
+}
+
+enum Status {
+  Active
+  Inactive
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  gender    Gender   @default(unset)
+  email     String   @unique
+  password  String
+  alamat    String
+  no_telp   String
+  posisi    Posisi   @default(unset)
+  status    Status   @default(Active) // Set a default value
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-model Sale{
-  id Int  @id @default(autoincrement())
-  sales_id Int
-  customer_id Int
-  code String @unique
-  shipping_cost Int
-  shipping_info String
-  other_cost Int
-  other_info String
+
+model Purchase {
+  id             Int      @id @default(autoincrement())
+  supplier_id    Int
+  code           String   @unique
+  shipping_cost  Int
+  shipping_info  String
+  other_cost     Int
+  other_info     String
+  total          Int
+  payment        String
   payment_method String
-  status String
-  total Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  status         String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Sale {
+  id             Int      @id @default(autoincrement())
+  sales_id       Int
+  customer_id    Int
+  code           String   @unique
+  shipping_cost  Int
+  shipping_info  String
+  other_cost     Int
+  other_info     String
+  payment_method String
+  status         String
+  total          Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
