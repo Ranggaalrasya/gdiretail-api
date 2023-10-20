@@ -1,6 +1,7 @@
 export interface Inventory {
-    id: number;
-    name: string;
-    description: string;
-    quantity: number;
-  }
+  id?: number;
+  code: number
+  name: string;
+  description: string;
+  quantity: number;
+}

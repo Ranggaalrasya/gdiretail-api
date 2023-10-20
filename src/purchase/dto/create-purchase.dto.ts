@@ -3,7 +3,7 @@ import { IsNumber, IsNotEmpty, IsString } from "class-validator";
 export class CreatePurchaseDto {
     @IsNumber()
     @IsNotEmpty()
-    supplier_id: number;
+    supplier_code: number;
 
     @IsString()
     @IsNotEmpty()

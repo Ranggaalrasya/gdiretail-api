@@ -1,7 +1,8 @@
-export interface Supplier {
-    id: number;
-    name: string;
-    address: string;
-    phoneNumber: string;
-  }
+export interface Inventory {
+  id?: number;
+  code: number
+  name: string;
+  description: string;
+  quantity: number;
+}
   

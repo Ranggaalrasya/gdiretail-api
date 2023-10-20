@@ -2,11 +2,11 @@ import { IsNumber, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateSaleDto {
     @IsNotEmpty()
-    sales_id: number;
+    sales_code: number;
 
     @IsNumber()
     @IsNotEmpty()
-    customer_id: number;
+    customer_code: number;
 
     @IsString()
     @IsNotEmpty()
