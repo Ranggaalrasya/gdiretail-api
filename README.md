@@ -71,3 +71,97 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## Documentation
+
+REGISTRATION AND USER MANAGEMENT
+
+http://localhost:3000/user "{POST} user registration, {GET} get all user"
+http://localhost:3000/user/(id) "{GET} get user by id, {PATCH} update user by id, {DELETE} delete user by id"
+
+json format and validation to make or update user
+{
+    "name" : "Shaun McNugget", 		-> string
+    "gender" : "Pria", 			-> unset, Pria, Wanita
+    "email" : "Shaun@gmail.com", 	-> string, must be email
+    "password" : "12345", 		-> string
+    "alamat" : "JL. Lah kepo", 		-> string
+    "no_telp" : "085678910", 		-> string
+    "posisi" : "Sales", 		-> unset, SuperAdmin, Admin, Sales
+    "status" : "Active" 		-> Active, Inactive
+}
+
+LOGIN
+
+http://localhost:3000/auth/login "{POST} Login and getting jwt token"
+
+json format to login
+{
+    "email" : "Shaun@gmail.com",
+    "password" : "12345"
+}
+
+
+PURCHASE MANAGEMENT
+
+http://localhost:3000/purchase "{POST} make a purchase, {GET} get all purchase"
+http://localhost:3000/purchase/(id) "{GET} get purchase by id, {PATCH} update purchase by id, {DELETE} delete purchase by id"
+
+json format and validation to make a or update purchase
+{
+    "supplier_id"       : 1, 		-> Integer
+    "code"              : "prcs-01", 	-> String
+    "shipping_cost"     : 20000, 	-> Integer
+    "shipping_info"     : "", 		-> String
+    "other_cost"        : 30000, 	-> Integer
+    "other_info"        : "", 		-> String
+    "total"             : 100000, 	-> Integer
+    "payment"           : "paid", 	-> String
+    "payment_method"    : "cash", 	-> String
+    "status"            : "approved" 	-> String
+}
+
+SALE MANAGEMENT
+
+http://localhost:3000/sale "{POST} make a sale, {GET} get all sales"
+http://localhost:3000/sale/(id) "{GET} get sales by id, {PATCH} update sales by id, {DELETE} delete sales by id"
+
+json format and validation to make or update a sale
+{
+    "sales_id" 		: 1, 		-> Integer
+    "customer_id" 	: 23, 		-> Integer
+    "code" 		: "Sls-00999", 	-> String
+    "shipping_cost" 	: 20000, 	-> Integer
+    "shipping_info" 	: "",  		-> String
+    "other_cost" 	: 30000, 	-> Integer
+    "other_info" 	: "", 		-> String
+    "payment_method" 	: "Cash", 	-> String
+    "status" 		: "Approved", 	-> String
+    "total" 		: 1000000 	-> String
+}
+
+PRODUCT MANAGEMENT 
+
+http://localhost:3000/sale "{POST} make a product, {GET} get all products"
+http://localhost:3000/sale/(id) "{GET} get products by id, {PATCH} update products by id, {DELETE} delete products by id"
+
+json format and validation to make or update a product
+{
+    "product_name" 	: "Pencil", 	-> String
+    "product_price" 	: 20000, 	-> Integer
+    "product_quantity" 	: 100, 		-> Integer
+}
+
+SUPPLIER MANAGEMENT 
+
+http://localhost:3000/sale "{POST} make a supplier, {GET} get all supplier"
+http://localhost:3000/sale/(id) "{GET} get supplier by id, {PATCH} update supplier by id, {DELETE} delete supplier by id"
+
+json format and validation to make or update a supplier
+{
+    "supplier_name" 	: "Pencil", 	-> String
+    "supplier_address" 	: "kalimantan", -> String
+    "product_quantity" 	: "0847563846", -> String
+}
+
+
