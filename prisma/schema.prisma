@@ -46,35 +46,39 @@ model User {
 
 
 model Purchase {
-  id             Int      @id @default(autoincrement())
-  supplier_id    Int
-  code           String   @unique
-  shipping_cost  Int
-  shipping_info  String
-  other_cost     Int
-  other_info     String
-  total          Int
-  payment        String
-  payment_method String
-  status         String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  id                Int      @id @default(autoincrement())
+  supplier_id       Int
+  code              String   @unique
+  shipping_cost     Int
+  shipping_info     String
+  other_cost        Int
+  other_info        String
+  total             Int
+  payment           String
+  payment_method    String
+  status            String
+  product_id        Int
+  product_quantity  Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 }
 
 model Sale {
-  id             Int      @id @default(autoincrement())
-  sales_id       Int
-  customer_id    Int
-  code           String   @unique
-  shipping_cost  Int
-  shipping_info  String
-  other_cost     Int
-  other_info     String
-  payment_method String
+  id                Int      @id @default(autoincrement())
+  sales_id          Int
+  customer_id       Int
+  code              String   @unique
+  shipping_cost     Int
+  shipping_info     String
+  other_cost        Int
+  other_info        String
+  payment_method    String
   status String
-  total Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  total             Int
+  product_id        Int
+  product_quantity  Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 }
 
 model Supplier{

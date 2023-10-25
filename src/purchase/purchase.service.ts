@@ -6,10 +6,29 @@ import { PrismaService } from 'src/prisma.service';
 @Injectable()
 export class PurchaseService {
   constructor(private prisma: PrismaService) {}
-  create(createPurchaseDto: CreatePurchaseDto) {
-    return this.prisma.purchase.create({
-      data: createPurchaseDto,
-    });
+  async create(createPurchaseDto: CreatePurchaseDto) {
+    try {
+      const purchase = await this.prisma.purchase.create({
+        data: createPurchaseDto,
+      });
+  
+      await this.prisma.product.update({
+        where: {
+          id: createPurchaseDto.product_id,
+        },
+        data: {
+          product_quantity: {
+            increment: createPurchaseDto.product_quantity,
+          }
+        },
+      });
+  
+      return purchase;
+    } catch (error) {
+      // Handle any potential errors here
+      throw error;
+    }
+
   }
 
   findAll() {
