@@ -6,10 +6,28 @@ import { PrismaService } from 'src/prisma.service';
 @Injectable()
 export class SaleService {
   constructor(private prisma: PrismaService) {}
-  create(createSaleDto: CreateSaleDto) {
-    return this.prisma.sale.create({
-      data: createSaleDto,
-    });
+  async create(createSaleDto: CreateSaleDto) {
+    try {
+      const sale = await this.prisma.sale.create({
+        data: createSaleDto,
+      });
+  
+      await this.prisma.product.update({
+        where: {
+          id: createSaleDto.product_id,
+        },
+        data: {
+          product_quantity: {
+            decrement: createSaleDto.product_quantity,
+          }
+        },
+      });
+  
+      return sale;
+    } catch (error) {
+      // Handle any potential errors here
+      throw error;
+    }
   }
 
   findAll() {

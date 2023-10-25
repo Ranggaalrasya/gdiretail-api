@@ -32,4 +32,12 @@ export class CreateSaleDto {
 
     @IsNumber()
     total: number;
+
+    @IsNotEmpty()
+    @IsNumber()
+    product_id: number;
+
+    @IsNotEmpty()
+    @IsNumber()
+    product_quantity: number;
 }
